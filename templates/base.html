@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %} My Site {% endblock %}</title>
+        {% load static from staticfiles %}
+        <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+        {% block assets %}{% endblock %}
+    </head>
+    <body>
+        <div id="control">
+            <a class="button" href="/">Edit</a>
+            <a class="button" href="/">Dashboard</a>
+        </div>
+        <header>
+            <div class="header-wrapper">
+                <div class="section">
+                    <a class="logo" href="#">
+                        <img src="/Users/hane/Downloads/tumblr_mm72snTXMH1rgpyeqo1_400.png ">
+                    </a>
+                    <div id="title">
+                        <a href="{% url 'index' %}">My Site</a>
+                    </div>
+                    <div id="description">
+                        Record My Life
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main>
+            {% block main %}{% endblock %}
+        </main>
+        <footer>
+            &copy;&nbsp;Powered by django, 2017.
+        </footer>
+    </body>
+</html>

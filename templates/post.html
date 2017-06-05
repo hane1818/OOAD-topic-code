@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}
+    {% if post.text %}
+        {{ post.text.title }}
+    {% else %}
+        My Site
+    {% endif %}
+{% endblock %}
+{% block main %}
+            <div class="content-wrapper post">
+                {% if post.text %}
+                <article class="text-post">
+                    <h2>
+                        <a href="{% url 'post_detail' pk=post.pk %}">{{ post.text.title }}</a>
+                    </h2>
+                    <time>
+                        <a href="{% url 'post_detail' pk=post.pk %}">{{ post.pub_date|date:"M d, Y"}}</a>
+                    </time>
+                {% elif post.photo %}
+                <article class="photo-post">
+                    <time>
+                        <a href="{% url 'post_detail' pk=post.pk %}">{{ post.pub_date|date:"M d, Y"}}</a>
+                    </time>
+                    <img src="{{ post.photo.image.url }}" alt=""><br>
+                {% else %}
+                <article class="link-post">
+                    <time>
+                        <a href="{% url 'post_detail' pk=post.pk %}">{{ post.pub_date|date:"M d, Y"}}</a>
+                    </time>
+                    <a href="{{ post.link.url }}">{{ post.link.url }}</a>
+                {% endif %}
+                    <div class="content read-more-block">
+                        {{ post.content }}
+                    </div>
+                </article>
+            </div>
+{% endblock %}

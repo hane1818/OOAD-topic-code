@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}My Site{% endblock %}
+{% block main %}
+            <div class="content-wrapper index">
+                {% for post in post_list %}
+                {% if post.text %}
+                <article class="text-post">
+                    <h2>
+                        <a href="{% url 'post_detail' pk=post.pk %}">{{ post.text.title }}</a>
+                    </h2>
+                    <time>
+                        <a href="{% url 'post_detail' pk=post.pk %}">{{ post.pub_date|date:"M d, Y"}}</a>
+                    </time>
+                {% elif post.photo %}
+                <article class="photo-post">
+                    <time>
+                        <a href="{% url 'post_detail' pk=post.pk %}">{{ post.pub_date|date:"M d, Y"}}</a>
+                    </time>
+                    <img src="{{ post.photo.image.url }}" alt=""><br>
+                {% else %}
+                <article class="link-post">
+                    <time>
+                        <a href="{% url 'post_detail' pk=post.pk %}">{{ post.pub_date|date:"M d, Y"}}</a>
+                    </time>
+                    <a href="{{ post.link.url }}">{{ post.link.url }}</a>
+                {% endif %}
+                    <div class="content read-more-block">
+                        {{ post.content }}
+                    </div>
+                    <p class="read-more-container">
+                        <span style="color: #9a998c;">. . . </span>
+                        <a class="read-more" href="{% url 'post_detail' pk=post.pk %}">Read More</a>
+                        <span style="color: #9a998c;">. . . </span>
+                    </p>
+                </article>
+                {% endfor %}
+            </div>
+{% endblock %}
