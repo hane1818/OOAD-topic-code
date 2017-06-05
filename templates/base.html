@@ -2,7 +2,7 @@
     <head>
         <meta charset="utf-8">
         <title>{% block title %} My Site {% endblock %}</title>
-        {% load static from staticfiles %}
+        {% load static %}
         <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
         {% block assets %}{% endblock %}
     </head>
