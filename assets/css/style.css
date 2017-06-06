@@ -185,7 +185,7 @@ code, code pre {
     text-align: center;
 }
 .read-more-block {
-    height: 10em;
+    max-height: 5em;
     overflow: hidden;
     background-color: #eff1f3;
 }
