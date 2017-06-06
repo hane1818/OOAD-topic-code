@@ -13,7 +13,7 @@ class Text(Post):
 
 class Photo(Post):
     """Photo Post"""
-    image = models.ImageField(upload_to='media')
+    image = models.ImageField(upload_to='blog_photo')
 
 class Link(Post):
     """Link Post"""
